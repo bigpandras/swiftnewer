@@ -1,0 +1,20 @@
+swift中表示“类型范围作用域”这一概念有两个不同的关键字，它们是static和class。这两个关键字确实都表达了这个意思，但是在一些其他一些语言，
+包括Objective－C中，我们并不会特别的区分类变量/类方法和静态变量/静态函数。但是在Swift的早期版本中，这两个关键字是不能混用的。
+在非class的类型上下文中，我们统一使用static来描述类型作用域。这包括在enum和struct中表述类型方法和类型属性时。在这两个值类型中，
+我们可以在类型范围内声明并使用存储属性、计算属性和方法。static适用的场景如下：
+struct Point {
+      let x: Double
+      let y: Double
+}
+// 存储属性
+static var ones: [Point] {
+      return [Point(x: 1, y: 1),
+              Point(x: -1, y: 1),
+              Point(x: 1, y: -1),
+              Point(x: -1, y: -1)]
+}
+
+// 类型方法
+static  func add(p1: Point, p2: Point) -> Point {
+    return Point(x: p1.x + p2.x, y: p1.y + p2.y)
+}
