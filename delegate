@@ -1,0 +1,12 @@
+Cocoa开发中接口－委托（protocol－delegate）模式是一种常见的模式，
+它贯穿于整个Cocoa框架中，为代码之间的关系和解耦合做出了不可磨灭的贡献。
+但是由于在swift 中protocol是可以被除了class以外的其它类型遵守的，而对于像struct或enum的类型，本身就不通过引用计数来管理内存，
+所以也不能用weak这样的ARC的概念来修饰。如果要在swift中使用weak delegate。一种做法是将protocol声明为Obejctive－C的，这可以通过
+在protocol上添加@objc关键字来达到，Objective－C的protocol都只有类能实现，因此使用weak来修饰就合理了。
+@objc protocol MyClassDelegate: Class {
+    func method()
+}
+另一种可能更好的方法是在protocol声明的名字后面加上class，这可以为编译器显示的指明protocol只能有class来实现。
+protocol MyClassDelegate: class {
+ func method()
+}
