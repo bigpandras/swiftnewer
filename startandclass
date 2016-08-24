@@ -18,3 +18,9 @@ static var ones: [Point] {
 static  func add(p1: Point, p2: Point) -> Point {
     return Point(x: p1.x + p2.x, y: p1.y + p2.y)
 }
+class关键字相对就明白许多，是专门用在class类型的上下文中的，可以用来修饰类方法及类的计算属性。
+但要注意，class中现在是不能出现存储属性的，我们如果写类似这样的代码：
+class MyClass {
+    class var bar: Bar?
+}
+编译时会得到一个错误：class variables not yet supported
